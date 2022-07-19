@@ -32,7 +32,7 @@ class Command(commands.Cog):
 
     #snipe
     
-    @commands.Cog.listener()
+    @commands.Cog.listener()    
     async def on_message_delete(self, message):
         snipe_message_author[message.channel.id]= message.author
         snipe_message_content[message.channel.id]= message.content
