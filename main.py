@@ -40,7 +40,13 @@ async def help(ctx):
         await ctx.message.channel.send("Message sent to your DMs")
 
 
-
+@client.event
+async def on_ready():
+    guild_count = 0
+    for guild in client.guilds:
+        print(f"- {guild.id} (name: {guild.name})")
+        guild_count = guild_count + 1
+    print("UwU Bot is in " + str(guild_count) + " guilds.")
 
 
 
