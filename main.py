@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import os
 
-BOT_NAME = "UwU Bot"
+# ======================================================================================
 
 client = commands.Bot(command_prefix='uwu ', description='đang chạy thử nghiệm UwU')
 client.remove_command('help')
@@ -23,6 +23,8 @@ async def reload(ctx, extensions):
 for filename in os.listdir('./ext'):
     if filename.endswith('.py'):
         client.load_extension(f'ext.{filename[:-3]}')
+
+# ======================================================================================
 
 #help
 @client.command(pass_context=True)
