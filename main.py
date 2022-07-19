@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 import os
 
+BOT_NAME = "UwU Bot"
+
 client = commands.Bot(command_prefix='uwu ', description='đang chạy thử nghiệm UwU')
 client.remove_command('help')
 
