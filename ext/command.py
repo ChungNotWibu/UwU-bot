@@ -21,8 +21,10 @@ class Command(commands.Cog):
     #hello
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.content == "hello":
-            await message.channel.send("lô cc")
+        if message.content == 'hello':
+            await message.channel.send('lô cc')
+        if message.content == 'hi':
+            await message.channel.send('hi')
 
     #command
     #ping
