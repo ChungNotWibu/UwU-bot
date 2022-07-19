@@ -28,24 +28,23 @@ class Command(commands.Cog):
         await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('uwu help'))
         print('Bot ready!!!')
 
-    #hello&bye
+    #Answer
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.content == 'hello':
             await message.channel.send('Hewro UwU')
         if message.content == 'bye':
             await message.channel.send(f'UwU Goodbye {message.author}')
+        if message.content == 'mom':
+            await message.channel.send(f'UwU {message.author} mom taste good like night')
+        if message.content == 'daddy':
+            await message.channel.send('what do u need son, money or me uwu')
+        if message.content == 'primogems':
+            await message.channel.send('such a pain ụnu')
+        if message.content == 'good night':
+            await message.channel.send(f'sweet dream UwU {message.author}')
 
- 
 #  ===================================================================================================
-    #counting server
-    # @commands.Cog.listener()
-    # async def on_ready(self):
-    #     server_count = 0
-    #     for guild in self.guilds:
-	# 	        print(f"- {guild.id} (name: {guild.name})")
-    #         server_Count = server_count + 1
-    #     print("UwU Bot is in  " + str(server_count) + " server.")
 
     #member count
     # @commands.Cog.listener
