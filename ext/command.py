@@ -22,8 +22,10 @@ class Command(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.content == 'hello':
-            await message.channel.send('lô cc')
-
+            await message.channel.send('Hewro UwU')
+        if message.content == 'bye':
+            await message.channel.send(f'UwU Goodbye {message.author}')
+    
     #command
     #ping
     @commands.command()
