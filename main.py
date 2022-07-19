@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import os
 
-client = commands.Bot(command_prefix='uwu ')
+client = commands.Bot(command_prefix='uwu ', description='Dang chay thu nghiem UwU')
 client.remove_command('help')
 
 @client.command()
