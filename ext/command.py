@@ -12,13 +12,13 @@ class Command(commands.Cog):
         self.client = client
 
     #event
-    #status
+    #status&bot_ready
     @commands.Cog.listener()
     async def on_ready(self):
         await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('uwu help'))
         print('Bot ready!!!')
 
-    #hello
+    #hello&bye
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.content == 'hello':
@@ -49,7 +49,17 @@ class Command(commands.Cog):
         except:
             await ctx.send(f'Không có tin nhắn đã xóa trong #{channel.name}')    
 
-    
+    #userinfo
+    @commands.command()
+    async def info(ctx):
+        embed = discord.Embed(title=f"{ctx.guild.name}", description="Lorem Ipsum asdasd", timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
+        embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
+        embed.add_field(name="Server Owner", value=f"{ctx.guild.owner}")
+        embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
+        embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
+        embed.set_thumbnail(url=f"{ctx.guild.icon}")
+        await ctx.send(embed=embed)
+
 
 
 
