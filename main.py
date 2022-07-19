@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import os
 
-client = commands.Bot(command_prefix='uwu ', description='Dang chay thu nghiem UwU')
+client = commands.Bot(command_prefix='uwu ', description='đang chạy thử nghiệm UwU')
 client.remove_command('help')
 
 @client.command()
@@ -30,7 +30,7 @@ async def help(ctx):
             colour = discord.Colour.orange()
         )
         embed.set_author(name="Help")
-        embed.add_field(name="Ban can giup j",value="prefix = uwu",inline=False)
+        embed.add_field(name="Bạn cần giúp j",value="prefix = uwu",inline=False)
         channel = await author.create_dm()
         await channel.send(author,embed=embed)
         await ctx.message.channel.send("Message sent to your DMs")

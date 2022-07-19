@@ -12,10 +12,17 @@ class Command(commands.Cog):
         self.client = client
 
     #event
+    #status
     @commands.Cog.listener()
     async def on_ready(self):
         await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('uwu help'))
         print('Bot ready!!!')
+
+    #hello
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.content == "hello":
+            await message.channel.send("lô cc")
 
     #command
     #ping
@@ -34,11 +41,13 @@ class Command(commands.Cog):
     async def snipe(self, ctx):       
         channel = ctx.channel
         try:
-            snipeEmbed = discord.Embed(title=f"Tin nhan cuoi cung bi xoa trong #{channel.name}", description = snipe_message_content[channel.id]) 
-            snipeEmbed.set_footer(text=f'Xoa boi {snipe_message_author[channel.id]}')
+            snipeEmbed = discord.Embed(title=f"Tin nhắn cuối cùng bị xóa trong #{channel.name}", description = snipe_message_content[channel.id]) 
+            snipeEmbed.set_footer(text=f'Xóa bởi {snipe_message_author[channel.id]}')
             await ctx.send(embed= snipeEmbed)
         except:
-            await ctx.send(f'Ko co tin nhan da xoa trong #{channel.name}')    
+            await ctx.send(f'Không có tin nhắn đã xóa trong #{channel.name}')    
+
+    
 
 
 
