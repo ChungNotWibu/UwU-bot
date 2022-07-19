@@ -14,7 +14,7 @@ class Command(commands.Cog):
     #event
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('https://www.youtube.com/channel/UCyPC3LIdaT27lff-Ath-xEQ'))
+        await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('uwu help'))
         print('Bot ready!!!')
 
     #command
