@@ -59,7 +59,6 @@ class Command(commands.Cog):
     #     channel = get(guild.channels, name = test)
     #     await channel.edit(name = f'Member Count: {guild.member_count}')
 
-
 #  =================================================================================================== 
     
 
@@ -110,6 +109,9 @@ class Command(commands.Cog):
         embed.add_field(name=f'Roles:({len(rlist)})',value=''.join([b]),inline=False)
         embed.add_field(name='Top Role:',value=user.top_role.mention,inline=False)
         await ctx.send(embed=embed)    
+
+
+
 
 
 
