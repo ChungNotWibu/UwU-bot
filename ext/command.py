@@ -7,7 +7,6 @@ from distutils.log import error
 from glob import glob
 from itertools import count
 from operator import not_
-from random import random
 import re
 from tokenize import Name
 from turtle import title
