@@ -139,10 +139,10 @@ async def place(ctx, pos: int):
                 checkWinner(winningConditions, mark)
                 print(count)
                 if gameOver == True:
-                    await ctx.send(mark + " wins!")
+                    await ctx.send(mark + " Wins! (/◕ヮ◕)/ ヽ(^o^)/")
                 elif count >= 9:
                     gameOver = True
-                    await ctx.send("(゜o゜) Tie! ")
+                    await ctx.send("(゜o゜) Tie! Do you want to play again? ")
 
                 if turn == player1:
                     turn = player2
