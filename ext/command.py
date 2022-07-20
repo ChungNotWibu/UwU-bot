@@ -1,7 +1,13 @@
 
-from ast import parse
+from ast import Global, parse
 from cgi import test
 from datetime import datetime
+from dis import dis
+from distutils.log import error
+from glob import glob
+from itertools import count
+from operator import not_
+from random import random
 import re
 from tokenize import Name
 from turtle import title
@@ -13,8 +19,12 @@ from discord.ext import commands
 from discord.utils import get
 from hikari import Guild
 
+# ==========snipe===========
 snipe_message_author = {}
 snipe_message_content = {}
+# ==========================
+
+
 
 class Command(commands.Cog):
 
@@ -32,17 +42,19 @@ class Command(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.content == 'hello':
-            await message.channel.send('Hewro UwU')
+            await message.channel.send('Hewro ◕‿◕')
         if message.content == 'bye':
             await message.channel.send(f'UwU Goodbye {message.author}')
         if message.content == 'mom':
             await message.channel.send(f'UwU {message.author} mom taste good like night')
         if message.content == 'daddy':
-            await message.channel.send('what do u need son, money or me uwu')
+            await message.channel.send('what do u need son, money or me ( ͡° ͜ʖ ͡°) uwu')
         if message.content == 'primogems':
             await message.channel.send('such a pain ụnu')
         if message.content == 'good night':
             await message.channel.send(f'sweet dream UwU {message.author}')
+        if message.content == 'uwu':
+            await message.channel.send('UwU')
 
 #  ===================================================================================================
 
@@ -109,10 +121,6 @@ class Command(commands.Cog):
         embed.add_field(name=f'Roles:({len(rlist)})',value=''.join([b]),inline=False)
         embed.add_field(name='Top Role:',value=user.top_role.mention,inline=False)
         await ctx.send(embed=embed)    
-
-
-
-
 
 
 def setup(client):
