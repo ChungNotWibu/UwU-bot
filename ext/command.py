@@ -59,8 +59,10 @@ class Command(commands.Cog):
     #     channel = get(guild.channels, name = test)
     #     await channel.edit(name = f'Member Count: {guild.member_count}')
 
-#    =================================================================================================== 
+
+#  =================================================================================================== 
     
+
     #command
     #ping
     @commands.command()
