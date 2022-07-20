@@ -100,10 +100,10 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
         num = random.randint(1, 2)
         if num == 1:
             turn = player1
-            await ctx.send("It is <@" + str(player1.id) + ">'s turn.")
+            await ctx.send("It is <@" + str(player1.id) + ">'s turn (๑˃̵ᴗ˂̵)ﻭ.")
         elif num == 2:
             turn = player2
-            await ctx.send("It is <@" + str(player2.id) + ">'s turn.")
+            await ctx.send("It is <@" + str(player2.id) + ">'s turn (๑˃̵ᴗ˂̵)ﻭ.")
     else:
         await ctx.send("A game is already in progress! Finish it before starting a new one uwu.")
 
@@ -142,7 +142,7 @@ async def place(ctx, pos: int):
                     await ctx.send(mark + " wins!")
                 elif count >= 9:
                     gameOver = True
-                    await ctx.send("It's a tie!")
+                    await ctx.send("Tie!")
 
                 if turn == player1:
                     turn = player2
