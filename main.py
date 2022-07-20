@@ -3,7 +3,7 @@ from random import random
 import discord
 from discord.ext import commands
 import os
-
+import random
 # ======================================================================================
 
 client = commands.Bot(command_prefix='uwu ', description='đang chạy thử nghiệm UwU')
@@ -142,7 +142,7 @@ async def place(ctx, pos: int):
                     await ctx.send(mark + " wins!")
                 elif count >= 9:
                     gameOver = True
-                    await ctx.send("Tie!")
+                    await ctx.send("(゜o゜) Tie! ")
 
                 if turn == player1:
                     turn = player2
