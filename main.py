@@ -43,7 +43,7 @@ async def help(ctx):
     color = discord.Colour.green()
 
         )
-    embed.set_footer(f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+    embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
     embed.add_field(name='Help',value='Help for you')
     embed.add_field(name='Prefix',value='uwu_',inline=False) 
     embed.add_field(name='General',value='`snipe`, `ping`, `whois`', inline=False)
