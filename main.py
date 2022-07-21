@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 import os
 import random
+
+from hikari import Embed
 # ======================================================================================
 
 client = commands.Bot(command_prefix='uwu ', help_command=None)
@@ -41,8 +43,8 @@ async def on_ready():
 async def help(ctx):
     embed = discord.Embed(
     color = discord.Colour.green()
-
-        )
+    )
+        
     embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
     embed.add_field(name='Help',value='Help for you')
     embed.add_field(name='Prefix',value='uwu_',inline=False) 
