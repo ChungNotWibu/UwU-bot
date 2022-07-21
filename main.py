@@ -5,7 +5,7 @@ import os
 import random
 # ======================================================================================
 
-client = commands.Bot(command_prefix='uwu ', description='đang chạy thử nghiệm UwU')
+client = commands.Bot(command_prefix='uwu ', help_command=None)
 client.remove_command('help')
 
 @client.command()
@@ -25,19 +25,6 @@ for filename in os.listdir('./ext'):
         client.load_extension(f'ext.{filename[:-3]}')
 
 # ======================================================================================
-
-#help
-@client.command(pass_context=True)
-async def help(ctx):
-        author = ctx.message.author
-        embed = discord.Embed(
-            colour = discord.Colour.orange()
-         )
-        embed.set_author(name="Help")
-        embed.add_field(name="Bạn cần giúp j",value="prefix = uwu",inline=False)
-        channel = await author.create_dm()
-        await channel.send(author,embed=embed)
-        await ctx.message.channel.send("Message sent to your DMs")
 
 
 @client.event
