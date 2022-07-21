@@ -39,18 +39,18 @@ async def on_ready():
 
 
 #help
-@client.command( name='help')
-async def help(ctx):
-    embed = discord.Embed(
-    color = discord.Colour.green()
-    )
+# @client.command( name='help')
+# async def help(ctx):
+#     embed = discord.Embed(
+#     color = discord.Colour.green()
+#     )
         
-    embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
-    embed.add_field(name='Help',value='Help for you')
-    embed.add_field(name='Prefix',value='uwu_',inline=False) 
-    embed.add_field(name='General',value='`snipe`, `ping`, `whois`', inline=False)
-    embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)
-    await ctx.send(embed)
+#     embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+#     embed.add_field(name='Help',value='Help for you')
+#     embed.add_field(name='Prefix',value='uwu_',inline=False) 
+#     embed.add_field(name='General',value='`snipe`, `ping`, `whois`', inline=False)
+#     embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)
+#     await ctx.send(embed)
 
 
 
