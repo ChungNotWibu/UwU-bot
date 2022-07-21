@@ -121,12 +121,12 @@ class Command(commands.Cog):
     @commands.command(name='help')
     async def help(ctx):
         embed = discord.Embed(
-            title = 'help', 
             color = discord.Color.pink()
 
         )
         embed.set_footer(f'Requested by ~ {ctx.author}', icon_url=ctx.author.avatar_url)
-        embed.add_field(name='Prefix',value='uwu_')
+        embed.add_field(name='Help',value='Help for you')
+        embed.add_field(name='Prefix',value='uwu_',inline=False) 
         embed.add_field(name='General',value='`snipe`, `ping`, `whois`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)
         await ctx.send(embed)
