@@ -49,6 +49,25 @@ async def on_ready():
         guild_count = guild_count + 1
     print("UwU Bot is in " + str(guild_count) + " guilds.")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ======================================================================================
 #tictactoe
 player1 = ""
