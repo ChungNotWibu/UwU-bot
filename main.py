@@ -40,7 +40,7 @@ async def on_ready():
 @client.command( name='help')
 async def help(ctx):
     embed = discord.Embed(
-    color = discord.Colour.pink()
+    color = discord.Colour.green()
 
         )
     embed.set_footer(f'Requested by ~ {ctx.author}', icon_url=ctx.author.avatar_url)
