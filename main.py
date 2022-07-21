@@ -4,7 +4,6 @@ from discord.ext import commands
 import os
 import random
 
-from hikari import Embed
 # ======================================================================================
 
 client = commands.Bot(command_prefix='uwu ', help_command=None)
