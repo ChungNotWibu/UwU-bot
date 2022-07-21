@@ -1,22 +1,7 @@
 
-from ast import Global, parse
-from cgi import test
-from datetime import datetime
-from dis import dis
-from distutils.log import error
-from glob import glob
-from itertools import count
-from operator import not_
-import re
-from tokenize import Name
-from turtle import title
-from unicodedata import name
-from urllib.request import Request
-from aiohttp import request
 import discord
 from discord.ext import commands
 from discord.utils import get
-from hikari import Guild
 # ===========================================================
 
 # ==========snipe===========
