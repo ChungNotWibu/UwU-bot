@@ -1,4 +1,3 @@
-from http import client
 from random import random
 import discord
 from discord.ext import commands
