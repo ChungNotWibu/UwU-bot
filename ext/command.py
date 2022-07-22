@@ -44,8 +44,6 @@ class Command(commands.Cog):
             await message.channel.send('anh hai là đồ óc chó óc chó')
         if message.content == 'damn':
             await message.channel.send('em ơi lâu đài tình ái đó')
-        if message.content == 'phúc minh ngu nhỉ':
-            await message.channel.send('ngu thật')
         if message.content == 'yasuo':
             await message.channel.send('hasagi mà ko vào ko phải hảo hán')
         if message.content == 'sus':
