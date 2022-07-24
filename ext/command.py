@@ -1,4 +1,5 @@
 
+from cgitb import text
 import discord
 from discord.ext import commands
 # ===========================================================
@@ -9,20 +10,19 @@ snipe_message_content = {}
 # ==========================
 
 
-
 class Command(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
-    #event
-    #status&bot_ready
+    # event
+    # status&bot_ready
     @commands.Cog.listener()
     async def on_ready(self):
         await self.client.change_presence(status=discord.Status.idle, activity=discord.Game('uwu help'))
         print('Bot ready!!!')
 
-    #Answer
+    # Answer
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.content == 'hello':
@@ -48,67 +48,79 @@ class Command(commands.Cog):
         if message.content == 'sus':
             await message.channel.send('amogus ඞ')
 
-
-
-    #command
-    #ping
+    # command
+    # ping
     @commands.command()
     async def ping(self, ctx):
         if round(self.client.latency * 1000) <= 50:
-            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x44ff44)
+            embed = discord.Embed(
+                title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x44ff44)
         elif round(self.client.latency * 1000) <= 100:
-            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xffd000)
+            embed = discord.Embed(
+                title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xffd000)
         elif round(self.client.latency * 1000) <= 200:
-            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xff6600)
+            embed = discord.Embed(
+                title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xff6600)
         else:
-            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x990000)
+            embed = discord.Embed(
+                title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x990000)
         await ctx.send(embed=embed)
 
-
-    #snipe
-    
-    @commands.Cog.listener()    
+    # snipe
+    @commands.Cog.listener()
     async def on_message_delete(self, message):
-        snipe_message_author[message.channel.id]= message.author
-        snipe_message_content[message.channel.id]= message.content
-        
-    @commands.command() 
-    async def snipe(self, ctx):       
+        snipe_message_author[message.channel.id] = message.author
+        snipe_message_content[message.channel.id] = message.content
+
+    @commands.command()
+    async def snipe(self, ctx):
         channel = ctx.channel
         try:
-            snipeEmbed = discord.Embed(title=f"Tin nhắn cuối cùng bị xóa trong #{channel.name}", description = snipe_message_content[channel.id]) 
-            snipeEmbed.set_footer(text=f'Xóa bởi {snipe_message_author[channel.id]}')
-            await ctx.send(embed= snipeEmbed)
+            snipeEmbed = discord.Embed(
+                title=f"Tin nhắn cuối cùng bị xóa trong #{channel.name}", description=snipe_message_content[channel.id])
+            snipeEmbed.set_footer(
+                text=f'Xóa bởi {snipe_message_author[channel.id]}')
+            await ctx.send(embed=snipeEmbed)
         except:
-            await ctx.send(f'Không có tin nhắn đã xóa trong #{channel.name}')    
+            await ctx.send(f'Không có tin nhắn đã xóa trong #{channel.name}')
 
-    #whois
+    # whois
     @commands.command(name="whois")
-    async def whois(self, ctx,user:discord.Member=None):
-        if user==None:
-            user=ctx.author
+    async def whois(self, ctx, user: discord.Member = None):
+        if user == None:
+            user = ctx.author
         rlist = []
         for role in user.roles:
             if role.name != "@everyone":
                 rlist.append(role.mention)
         b = ", ".join(rlist)
 
-        embed = discord.Embed(colour=user.color,timestamp=ctx.message.created_at)
+        embed = discord.Embed(
+            colour=user.color, timestamp=ctx.message.created_at)
         embed.set_author(name=f"User Info - {user}"),
         embed.set_thumbnail(url=user.avatar_url),
         embed.set_footer(text=f'Requested by - {ctx.author}',
-        icon_url=ctx.author.avatar_url)
-        embed.add_field(name='ID:',value=user.id,inline=False)
-        embed.add_field(name='Name:',value=user.display_name,inline=False)
-        embed.add_field(name='Created at:',value=user.created_at,inline=False)
-        embed.add_field(name='Joined at:',value=user.joined_at,inline=False)
-        embed.add_field(name='Bot?',value=user.bot,inline=False)
-        embed.add_field(name=f'Roles:({len(rlist)})',value=''.join([b]),inline=False)
-        embed.add_field(name='Top Role:',value=user.top_role.mention,inline=False)
-        await ctx.send(embed=embed)    
+                         icon_url=ctx.author.avatar_url)
+        embed.add_field(name='ID:', value=user.id, inline=False)
+        embed.add_field(name='Name:', value=user.display_name, inline=False)
+        embed.add_field(name='Created at:',
+                        value=user.created_at, inline=False)
+        embed.add_field(name='Joined at:', value=user.joined_at, inline=False)
+        embed.add_field(name='Bot?', value=user.bot, inline=False)
+        embed.add_field(name=f'Roles:({len(rlist)})',
+                        value=''.join([b]), inline=False)
+        embed.add_field(name='Top Role:',
+                        value=user.top_role.mention, inline=False)
+        await ctx.send(embed=embed)
 
+    # say
+    @commands.command()
+    async def say(self, ctx, *, text):
+        await ctx.message.delete()
+        await ctx.send(f"{text}")
 
+    #help
 
 
 def setup(client):
-    client.add_cog(Command(client))       
+    client.add_cog(Command(client))
