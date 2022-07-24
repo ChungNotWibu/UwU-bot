@@ -120,6 +120,9 @@ class Command(commands.Cog):
         await ctx.send(f"{text}")
 
     #help
+    @commands.command()
+    async def help(self, ctx):
+        await ctx.send('help')
 
 
 def setup(client):
