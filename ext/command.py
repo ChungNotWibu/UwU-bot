@@ -54,7 +54,16 @@ class Command(commands.Cog):
     #ping
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f'Pong! {round(self.client.latency * 1000)}ms ')
+        if round(self.client.latency * 1000) <= 50:
+            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x44ff44)
+        elif round(self.client.latency * 1000) <= 100:
+            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xffd000)
+        elif round(self.client.latency * 1000) <= 200:
+            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0xff6600)
+        else:
+            embed=discord.Embed(title="PONG", description=f":ping_pong: Pingpongpingpong! The ping is **{round(self.client.latency *1000)}** ms-milliseconds !", color=0x990000)
+        await ctx.send(embed=embed)
+
 
     #snipe
     
@@ -98,21 +107,7 @@ class Command(commands.Cog):
         embed.add_field(name='Top Role:',value=user.top_role.mention,inline=False)
         await ctx.send(embed=embed)    
 
-    #help
-    @commands.command(
-        help="Shows the ping/latency of the bot in miliseconds.",
-        brief="Shows ping."
-    )
-    async def ping(self, ctx):
-        if round(self.latency * 1000) <= 50:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pingpingpingpingping! The ping is **{round(self.latency *1000)}** milliseconds!", color=0x44ff44)
-        elif round(self.latency * 1000) <= 100:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pingpingpingpingping! The ping is **{round(self.latency *1000)}** milliseconds!", color=0xffd000)
-        elif round(self.latency * 1000) <= 200:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pingpingpingpingping! The ping is **{round(self.latency *1000)}** milliseconds!", color=0xff6600)
-        else:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pingpingpingpingping! The ping is **{round(self.latency *1000)}** milliseconds!", color=0x990000)
-        await ctx.send(embed=embed)
+
 
 
 def setup(client):
