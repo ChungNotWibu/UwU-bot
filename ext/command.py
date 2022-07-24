@@ -236,7 +236,7 @@ def checkWinner(winningConditions, mark):
             gameOver = True
 
 
-@tictactoe.error
+@commands.tictactoe.error
 async def tictactoe_error(ctx, error):
     print(error)
     if isinstance(error, commands.MissingRequiredArgument):
@@ -245,7 +245,7 @@ async def tictactoe_error(ctx, error):
         await ctx.send("Plz make sure to mention/ping players (ie. <@688534433879556134>).")
 
 
-@place.error
+@commands.place.error
 async def place_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("Plz enter a position you would like to mark.")
