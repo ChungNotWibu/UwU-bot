@@ -2,6 +2,8 @@
 
 import discord
 from discord.ext import commands
+from random import random
+import random
 
 
 # ===========================================================
@@ -111,6 +113,12 @@ class Command(commands.Cog):
         embed.add_field(name='Top Role:',value=user.top_role.mention, inline=False)
         await ctx.send(embed=embed)
 
+    # dice
+    @commands.command(no_pm=True)
+    async def roll(self, ctx):
+        """Roll the dice UwU"""
+        await ctx.send(random.randint(1, 6))
+
     # say
     @commands.command()
     async def say(self, ctx, *, text):
@@ -146,6 +154,10 @@ class Command(commands.Cog):
         embed.add_field(name="Catergory Count:", value=str(len(guild.categories)))
         await ctx.message.channel.send(embed=embed)
 
+    # fakeban
+    @commands.command(no_pm=True)
+    async def ban(self, ctx, member: discord.Member):
+        await ctx.send(f"{member.display_name}, I banner you from this server! UwU bye")
 
 def setup(client):
     client.add_cog(Command(client))

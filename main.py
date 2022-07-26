@@ -69,9 +69,9 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
 
     if gameOver:
         global board
-        board = [":white_large_square:", ":white_large_square:", ":white_large_square:",
-                 ":white_large_square:", ":white_large_square:", ":white_large_square:",
-                 ":white_large_square:", ":white_large_square:", ":white_large_square:"]
+        board = [":white_large_square:",":white_large_square:",":white_large_square:",
+                ":white_large_square:",":white_large_square:",":white_large_square:",
+                ":white_large_square:",":white_large_square:", ":white_large_square:"]
         turn = ""
         gameOver = False
         count = 0
@@ -80,12 +80,10 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
 
         line = ""
         for x in range(len(board)):
-            if x == 2 or x == 5 or x == 8:
-                line += " " + board[x]
-                await ctx.send(line)
-                line = ""
-            else:
-                line += " " + board[x]
+            if x == 3 or x == 6 : line = line + "\n"
+
+            line += "" + board[x]
+            if x == 8: await ctx.send(line)
 
         num = random.randint(1, 2)
         if num == 1:
@@ -120,12 +118,9 @@ async def place(ctx, pos: int):
 
                 line = ""
                 for x in range(len(board)):
-                    if x == 2 or x == 5 or x == 8:
-                        line += " " + board[x]
-                        await ctx.send(line)
-                        line = ""
-                    else:
-                        line += " " + board[x]
+                    if x == 3 or x == 6 : line = line + "\n"
+                    line += "" + board[x]
+                    if x == 8: await ctx.send(line)
 
                 checkWinner(winningConditions, mark)
                 print(count)
@@ -175,3 +170,6 @@ async def place_error(ctx, error):
 
 
 client.run('OTk2Nzc3NjAwNzc1MDk4NDI4.GX1uTb.kZxpYO8Pzpm8OUpufwFC_aOHTNMeazG_SaHMaA')
+
+
+
