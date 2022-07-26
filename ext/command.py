@@ -1,6 +1,8 @@
 
 import discord
 from discord.ext import commands
+
+
 # ===========================================================
 
 # ==========snipe===========
@@ -118,12 +120,10 @@ class Command(commands.Cog):
         await ctx.message.delete()
         await ctx.send(f"{text}")
 
-    #help
+    # help
     @commands.command()
     async def help(self, ctx):
         await ctx.send('help')
-
-    
 
 
 
