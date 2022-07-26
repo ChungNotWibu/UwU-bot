@@ -1,4 +1,5 @@
 
+
 import discord
 from discord.ext import commands
 
@@ -45,7 +46,7 @@ class Command(commands.Cog):
         if message.content == 'damn':
             await message.channel.send('em ơi lâu đài tình ái đó')
         if message.content == 'yasuo':
-            await message.channel.send('hasagi mà ko vào ko phải hảo hán')
+            await message.channel.send('hasagi mà ko trăn trối ko phải hảo hán')
         if message.content == 'sus':
             await message.channel.send('amogus ඞ')
 
@@ -97,21 +98,17 @@ class Command(commands.Cog):
         b = ", ".join(rlist)
 
         embed = discord.Embed(
-            colour=user.color, timestamp=ctx.message.created_at)
+        colour=user.color, timestamp=ctx.message.created_at)
         embed.set_author(name=f"User Info - {user}"),
         embed.set_thumbnail(url=user.avatar_url),
-        embed.set_footer(text=f'Requested by - {ctx.author}',
-                         icon_url=ctx.author.avatar_url)
+        embed.set_footer(text=f'Requested by - {ctx.author}',icon_url=ctx.author.avatar_url)
         embed.add_field(name='ID:', value=user.id, inline=False)
         embed.add_field(name='Name:', value=user.display_name, inline=False)
-        embed.add_field(name='Created at:',
-                        value=user.created_at, inline=False)
+        embed.add_field(name='Created at:',value=user.created_at, inline=False)
         embed.add_field(name='Joined at:', value=user.joined_at, inline=False)
         embed.add_field(name='Bot?', value=user.bot, inline=False)
-        embed.add_field(name=f'Roles:({len(rlist)})',
-                        value=''.join([b]), inline=False)
-        embed.add_field(name='Top Role:',
-                        value=user.top_role.mention, inline=False)
+        embed.add_field(name=f'Roles:({len(rlist)})',value=''.join([b]), inline=False)
+        embed.add_field(name='Top Role:',value=user.top_role.mention, inline=False)
         await ctx.send(embed=embed)
 
     # say
@@ -123,8 +120,31 @@ class Command(commands.Cog):
     # help
     @commands.command()
     async def help(self, ctx):
-        await ctx.send('help')
+        embed = discord.Embed(
+        color = discord.Colour.green()
+        )
+        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+        embed.add_field(name='Help',value='Help for you')
+        embed.add_field(name='Prefix',value='uwu_',inline=False)
+        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `say`, `serverinfo`', inline=False)
+        embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
+        await ctx.message.channel.send(embed=embed)
 
+    # serverinfo
+    @commands.command(no_pm=True)
+    async def serverinfo(self, ctx):
+        """General info about the server."""
+        embed = discord.Embed()
+        guild = ctx.message.guild
+        embed.set_author(name=str(guild), icon_url=guild.icon_url)
+        embed.add_field(name="Created at:", value=str(guild.created_at.strftime("%d-%m-%Y at %H:%M")))
+        embed.add_field(name="Member Count:", value=str(guild.member_count))
+        embed.add_field(name="Role Count:", value=str(len(guild.roles)))
+        embed.add_field(name="Channel Count:", value=str(len(guild.channels)))
+        embed.add_field(name="TextChannel Count:", value=str(len(guild.text_channels)))
+        embed.add_field(name="VoiceChannel Count:", value=str(len(guild.voice_channels)))
+        embed.add_field(name="Catergory Count:", value=str(len(guild.categories)))
+        await ctx.message.channel.send(embed=embed)
 
 
 def setup(client):
