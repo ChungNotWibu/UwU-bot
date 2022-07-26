@@ -1,5 +1,4 @@
 
-from cgitb import text
 import discord
 from discord.ext import commands
 # ===========================================================
@@ -123,6 +122,9 @@ class Command(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         await ctx.send('help')
+
+    
+
 
 
 def setup(client):
