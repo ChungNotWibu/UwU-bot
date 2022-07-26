@@ -159,5 +159,7 @@ class Command(commands.Cog):
     async def ban(self, ctx, member: discord.Member):
         await ctx.send(f"{member.display_name}, I banner you from this server! gUwUd bye")
 
+
+
 def setup(client):
     client.add_cog(Command(client))
