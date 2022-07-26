@@ -157,7 +157,7 @@ class Command(commands.Cog):
     # fakeban
     @commands.command(no_pm=True)
     async def ban(self, ctx, member: discord.Member):
-        await ctx.send(f"{member.display_name}, I banner you from this server! UwU bye")
+        await ctx.send(f"{member.display_name}, I banner you from this server! gUwUd bye")
 
 def setup(client):
     client.add_cog(Command(client))
