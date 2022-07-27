@@ -6,6 +6,7 @@ from random import random
 import random
 
 
+
 # ===========================================================
 
 # ==========snipe===========
@@ -119,6 +120,18 @@ class Command(commands.Cog):
         """Roll the dice UwU"""
         await ctx.send(random.randint(1, 6))
 
+    # invite
+    @commands.command()
+    async def invite(self, ctx):
+        embed = discord.Embed(
+        color = discord.Colour.green()
+        )
+        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+        embed.add_field(name='Invite',value='https://discord.com/api/oauth2/authorize?client_id=996777600775098428&permissions=309237663744&scope=bot')
+        await ctx.message.channel.send(embed=embed)
+
+
+
     # say
     @commands.command()
     async def say(self, ctx, *, text):
@@ -133,8 +146,9 @@ class Command(commands.Cog):
         )
         embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.add_field(name='Help',value='Help for you')
-        embed.add_field(name='Prefix',value='uwu_',inline=False)
-        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `say`, `serverinfo`', inline=False)
+        embed.add_field(name='Prefix',value='`uwu_`',inline=False)
+        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`', inline=False)
+        embed.add_field(name='Fun',value='`ban`, `roll`, `say`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
         await ctx.message.channel.send(embed=embed)
 
