@@ -150,7 +150,7 @@ class Command(commands.Cog):
         embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.add_field(name='Help',value='Help for you')
         embed.add_field(name='Prefix',value='`uwu`',inline=False)
-        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`', inline=False)
+        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`', inline=False)
         embed.add_field(name='Fun',value='`ban`, `roll`, `say`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
         await ctx.message.channel.send(embed=embed)
