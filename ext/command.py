@@ -128,7 +128,7 @@ class Command(commands.Cog):
         masked_link_embed = discord.Embed(
             title ='Invite',            
             description = '**[Invite Bot into your server](https://discord.com/api/oauth2/authorize?client_id=996777600775098428&permissions=309237663744&scope=bot)**',
-            description = '**[Discord server](https://discord.gg/6PWstcCrKr)**',
+            description = '**[My Discord server](https://discord.gg/6PWstcCrKr)**',
             color = discord.Colour.teal()
         )
         await ctx.message.channel.send(embed=masked_link_embed)
