@@ -1,9 +1,11 @@
 
 
+
 import discord
 from discord.ext import commands
 from random import random
 import random
+
 
 
 
@@ -123,12 +125,13 @@ class Command(commands.Cog):
     # invite
     @commands.command()
     async def invite(self, ctx):
-        embed = discord.Embed(
-        color = discord.Colour.green()
+        masked_link_embed = discord.Embed(
+            title ='Invite',
+            description = '**[Invite Bot into your server](https://discord.com/api/oauth2/authorize?client_id=996777600775098428&permissions=309237663744&scope=bot)**',
+            color = discord.Colour.teal()
         )
-        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
-        embed.add_field(name='Invite',value='https://discord.com/api/oauth2/authorize?client_id=996777600775098428&permissions=309237663744&scope=bot')
-        await ctx.message.channel.send(embed=embed)
+        await ctx.message.channel.send(embed=masked_link_embed)
+
 
 
 
