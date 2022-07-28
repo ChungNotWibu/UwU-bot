@@ -1,12 +1,8 @@
-from cgitb import grey
-from datetime import time
 from random import random
-from turtle import color, title
-import discord
 from discord.ext import commands
 import os
 import random
-import time as time_module
+
 
 # ======================================================================================
 
