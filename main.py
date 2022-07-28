@@ -1,6 +1,7 @@
+from cgitb import grey
 from datetime import time
 from random import random
-from turtle import title
+from turtle import color, title
 import discord
 from discord.ext import commands
 import os
@@ -176,12 +177,18 @@ async def end(ctx):
         gameOver = True
         embed = discord.Embed(
             title='End Game', 
-            description = 'The game has been restart UwU'
+            description = 'The game has been restart UwU',   
+            color= discord.Colour.green()      
         )
         await ctx.send(embed=embed)
      
     else:
-        await ctx.send('Only guys who started the game can end this game')
+        embed = discord.Embed( 
+            title='UwU',
+            description = 'Only guys who started the game can end this game',
+            color= discord.Colour.red()
+        )
+        await ctx.send(embed=embed)
 
 
 @tictactoe.error
