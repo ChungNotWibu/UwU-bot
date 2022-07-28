@@ -189,7 +189,7 @@ class Command(commands.Cog):
             "c": "ɔ",
             "b": "q",
             "a": "ɐ"
-        }
+                }
         message = message.lower()
         NewMessage = []
         for letter in message:
