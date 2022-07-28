@@ -1,8 +1,11 @@
+from datetime import time
 from random import random
+from turtle import title
 import discord
 from discord.ext import commands
 import os
 import random
+import time as time_module
 
 # ======================================================================================
 
@@ -146,6 +149,39 @@ def checkWinner(winningConditions, mark):
     for condition in winningConditions:
         if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
             gameOver = True
+
+# def print_time(time) :
+#     client.itemconfig(text = str(time))
+#     time 
+# now = time_module.time()
+# TIME_LIMIT = 60
+# if time == TIME_LIMIT:
+#     gameOver = True
+
+@client.command()
+async def end(ctx):
+    global turn
+    global player1
+    global player2
+    global board
+    global count
+    global gameOver
+
+    if ctx.message.author.id == player1.id or ctx.message.author.id == player2.id : 
+
+    
+        count = 0
+        player1 = ''
+        player2 = ''
+        gameOver = True
+        embed = discord.Embed(
+            title='End Game', 
+            description = 'The game has been restart UwU'
+        )
+        await ctx.send(embed=embed)
+     
+    else:
+        await ctx.send('Only guys who started the game can end this game')
 
 
 @tictactoe.error
