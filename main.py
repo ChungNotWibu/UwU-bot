@@ -148,14 +148,6 @@ def checkWinner(winningConditions, mark):
         if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
             gameOver = True
 
-# def print_time(time) :
-#     client.itemconfig(text = str(time))
-#     time 
-# now = time_module.time()
-# TIME_LIMIT = 60
-# if time == TIME_LIMIT:
-#     gameOver = True
-
 @client.command()
 async def end(ctx):
     global turn
@@ -165,18 +157,26 @@ async def end(ctx):
     global count
     global gameOver
 
-
+    if ctx.message.author.id == player1.id or ctx.message.author.id == player2.id :
     
-    count = 0
-    player1 = ''
-    player2 = ''
-    gameOver = True
-    embed = discord.Embed(
-        title='End Game', 
-        description = 'The game has been restart UwU',   
-        color= discord.Colour.green()      
-    )
-    await ctx.send(embed=embed)
+        count = 0
+        player1 = ''
+        player2 = ''
+        gameOver = True
+        embed = discord.Embed(
+            title='End Game', 
+            description = 'The game has been restart UwU',   
+            color= discord.Colour.green()      
+        )
+        await ctx.send(embed=embed)
+    else:
+        embed1 = discord.Embed(
+            title='Nuuuu', 
+            description = 'Only player in game can end a game',
+            color= discord.Colour.red()
+        )
+        await ctx.send(embed=embed1)
+        
      
 
 
