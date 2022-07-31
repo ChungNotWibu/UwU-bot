@@ -99,7 +99,7 @@ class Command(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(
-        color=0xffa8ff,
+        color=0xffa8ff,timestamp=ctx.message.created_at
         )
         embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.add_field(name='Help',value='Help for you')
@@ -131,7 +131,7 @@ class Command(commands.Cog):
         if avamember == None:
           avamember = ctx.author
         embed1 = discord.Embed(
-            colour=avamember.color,title = f"{avamember.name}'s avatar"
+            colour=avamember.color,title = f"{avamember.name}'s avatar",timestamp=ctx.message.created_at
         )
         embed1.set_image(url=avamember.avatar_url)
         embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url)
