@@ -5,7 +5,7 @@ import random
 
 # ===========================================================
 
-class Command(commands.Cog):
+class Fun(commands.Cog):
 
     def __init__(self, client):
         self.client = client
@@ -68,4 +68,4 @@ class Command(commands.Cog):
 # ===========================================================
 
 def setup(client):
-    client.add_cog(Command(client))
+    client.add_cog(Fun(client))
