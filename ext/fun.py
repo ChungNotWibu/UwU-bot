@@ -59,7 +59,10 @@ class Command(commands.Cog):
                 NewMessage.append(letter)
         await ctx.reply(("").join(reversed(NewMessage)), mention_author=False)
 
-
+    # fakeban
+    @commands.command(no_pm=True)
+    async def ban(self, ctx, member: discord.Member):
+        await ctx.send(f"{member.display_name}, I banner you from this server! gUwUd bye")
 
 
 # ===========================================================
