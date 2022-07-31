@@ -14,3 +14,55 @@ class Command(commands.Cog):
     @commands.command(no_pm=True)
     async def roll(self, ctx):
         await ctx.send(random.randint(1, 6))
+
+    # upsidedown
+    @commands.command(aliases=["updown"])
+    async def usd(self, ctx, *, message=None):
+        if message == None:
+            embed=discord.Embed(title=f"❌ You must enter a message!", color=0xFF0000)
+            await ctx.reply(embed=embed, mention_author=False)
+            return
+        letters = {
+            "z":"z",
+            "y": "ʎ",
+            "x": "x",
+            "w": "ʍ",
+            "v": "ʌ",
+            "u": "n",
+            "t": "ʇ",
+            "s": "s",
+            "r": "ɹ",
+            "q": "b",
+            "p": "d",
+            "o": "o",
+            "n": "u",
+            "m": "ɯ",
+            "l": "l",
+            "k": "ʞ",
+            "j": "ɾ",
+            "i": "ı",
+            "h": "ɥ",
+            "g": "ɓ",
+            "f": "ɟ",
+            "e": "ǝ",
+            "d": "p",
+            "c": "ɔ",
+            "b": "q",
+            "a": "ɐ"
+                }
+        message = message.lower()
+        NewMessage = []
+        for letter in message:
+            if letter in letters:
+                NewMessage.append(letters[letter])
+            else:
+                NewMessage.append(letter)
+        await ctx.reply(("").join(reversed(NewMessage)), mention_author=False)
+
+
+
+
+# ===========================================================
+
+def setup(client):
+    client.add_cog(Command(client))

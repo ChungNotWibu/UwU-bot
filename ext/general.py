@@ -81,11 +81,6 @@ class Command(commands.Cog):
         embed.add_field(name='Top Role:',value=user.top_role.mention, inline=False)
         await ctx.send(embed=embed)
 
-    # dice
-    @commands.command(no_pm=True)
-    async def roll(self, ctx):
-        await ctx.send(random.randint(1, 6))
-
     # invite
     @commands.command()
     async def invite(self, ctx):
@@ -95,9 +90,6 @@ class Command(commands.Cog):
             color = discord.Colour.teal()
         )
         await ctx.message.channel.send(embed=masked_link_embed)
-
-
-
 
     # say
     @commands.command()
@@ -118,50 +110,6 @@ class Command(commands.Cog):
         embed.add_field(name='Fun',value='`ban`, `roll`, `say`, `usd(upsidedown) [letter]`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
         await ctx.message.channel.send(embed=embed)
-
-    # upsidedown
-    @commands.command(aliases=["updown"])
-    async def usd(self, ctx, *, message=None):
-        if message == None:
-            embed=discord.Embed(title=f"❌ You must enter a message!", color=0xFF0000)
-            await ctx.reply(embed=embed, mention_author=False)
-            return
-        letters = {
-            "z":"z",
-            "y": "ʎ",
-            "x": "x",
-            "w": "ʍ",
-            "v": "ʌ",
-            "u": "n",
-            "t": "ʇ",
-            "s": "s",
-            "r": "ɹ",
-            "q": "b",
-            "p": "d",
-            "o": "o",
-            "n": "u",
-            "m": "ɯ",
-            "l": "l",
-            "k": "ʞ",
-            "j": "ɾ",
-            "i": "ı",
-            "h": "ɥ",
-            "g": "ɓ",
-            "f": "ɟ",
-            "e": "ǝ",
-            "d": "p",
-            "c": "ɔ",
-            "b": "q",
-            "a": "ɐ"
-                }
-        message = message.lower()
-        NewMessage = []
-        for letter in message:
-            if letter in letters:
-                NewMessage.append(letters[letter])
-            else:
-                NewMessage.append(letter)
-        await ctx.reply(("").join(reversed(NewMessage)), mention_author=False)
 
     # serverinfo
     @commands.command(no_pm=True)
