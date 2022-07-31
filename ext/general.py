@@ -1,4 +1,5 @@
 
+from turtle import color
 import discord
 from discord.ext import commands
 
@@ -104,7 +105,7 @@ class Command(commands.Cog):
         embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.add_field(name='Help',value='Help for you')
         embed.add_field(name='Prefix',value='`uwu`',inline=False)
-        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`', inline=False)
+        embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`, `avatar`', inline=False)
         embed.add_field(name='Fun',value='`ban`, `roll`, `say`, `usd(upsidedown) [letter]`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
         await ctx.message.channel.send(embed=embed)
@@ -125,7 +126,18 @@ class Command(commands.Cog):
         embed.add_field(name="Catergory Count:", value=str(len(guild.categories)))
         await ctx.message.channel.send(embed=embed)
 
+    # avatar user
+    @commands.command()
+    async def avatar(self, ctx, *,  avamember: discord.Member=None):
+        if avamember == None:
+          avamember = ctx.author
+        embed1 = discord.Embed(
+            colour=avamember.color,title = f"{avamember.name}'s avatar"
+        )
+        embed1.set_image(url=avamember.avatar_url)
+        embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url)
 
+        await ctx.send(embed=embed1)
 
 def setup(client):
     client.add_cog(Command(client))
