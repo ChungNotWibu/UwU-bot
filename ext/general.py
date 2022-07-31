@@ -127,11 +127,6 @@ class Command(commands.Cog):
         embed.add_field(name="Catergory Count:", value=str(len(guild.categories)))
         await ctx.message.channel.send(embed=embed)
 
-    # fakeban
-    @commands.command(no_pm=True)
-    async def ban(self, ctx, member: discord.Member):
-        await ctx.send(f"{member.display_name}, I banner you from this server! gUwUd bye")
-
 
 
 def setup(client):
