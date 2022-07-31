@@ -99,7 +99,7 @@ class Command(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(
-        color=0xffa8ff(),
+        color=0xffa8ff,
         )
         embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.add_field(name='Help',value='Help for you')
