@@ -99,9 +99,9 @@ class Command(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(
-        color = discord.Colour.green()
+        color=0xffa8ff()
         )
-        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url,timestamp=ctx.message.created_at)
         embed.add_field(name='Help',value='Help for you')
         embed.add_field(name='Prefix',value='`uwu`',inline=False)
         embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`, `avatar`', inline=False)
@@ -134,7 +134,7 @@ class Command(commands.Cog):
             colour=avamember.color,title = f"{avamember.name}'s avatar"
         )
         embed1.set_image(url=avamember.avatar_url)
-        embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url)
+        embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url,timestamp=ctx.message.created_at)
 
         await ctx.send(embed=embed1)
 
