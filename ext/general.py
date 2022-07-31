@@ -134,7 +134,7 @@ class Command(commands.Cog):
             colour=avamember.color,title = f"{avamember.name}'s avatar"
         )
         embed1.set_image(url=avamember.avatar_url)
-        embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url,timestamp=ctx.message.created_at)
+        embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url)
 
         await ctx.send(embed=embed1)
 
