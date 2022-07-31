@@ -86,7 +86,6 @@ class Command(commands.Cog):
     # dice
     @commands.command(no_pm=True)
     async def roll(self, ctx):
-        """Roll the dice UwU"""
         await ctx.send(random.randint(1, 6))
 
     # invite
