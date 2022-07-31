@@ -107,7 +107,7 @@ class Command(commands.Cog):
         embed.add_field(name='Prefix',value='`uwu`',inline=False)
         embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`, `avatar`', inline=False)
         embed.add_field(name='Fun',value='`ban`, `roll`, `say`, `usd(upsidedown) [letter]`', inline=False)
-        embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]` ', inline=False)   
+        embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]`, `end` ', inline=False)   
         await ctx.message.channel.send(embed=embed)
 
     # serverinfo
