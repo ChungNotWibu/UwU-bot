@@ -1,6 +1,4 @@
 
-
-
 import discord
 from discord.ext import commands
 from random import random
@@ -22,7 +20,7 @@ class Command(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # command
+    # command general
     # ping
     @commands.command()
     async def ping(self, ctx):
