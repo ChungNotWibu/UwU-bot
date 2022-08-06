@@ -3,6 +3,8 @@ from discord.ext import commands
 from random import random
 import random
 
+from hikari import Member
+
 # ===========================================================
 
 class Fun(commands.Cog):
@@ -12,14 +14,17 @@ class Fun(commands.Cog):
 
     # dice
     @commands.command(no_pm=True)
-    async def roll(self, ctx):
-        await ctx.send(random.randint(1, 6))
+    async def roll(self, ctx,member = discord.Member):
+        embed = discord.Embed(title="Roll a dice between 1 to 6", description=f"{ctx.author} have released the number",color=0xff2222)
+        embed.set_thumbnail(url="https://uxwing.com/wp-content/themes/uxwing/download/sport-and-awards/dice-game-icon.png")
+        embed.add_field(name= random.randint(1, 6), value= 'You got that uwu')
+        await ctx.send(embed=embed)
 
     # upsidedown
     @commands.command(aliases=["updown"])
     async def usd(self, ctx, *, message=None):
         if message == None:
-            embed=discord.Embed(title=f"❌ You must enter a message!", color=0xFF0000)
+            embed = discord.Embed(title=f"❌ You must enter a message!", color=0xFF0000)
             await ctx.reply(embed=embed, mention_author=False)
             return
         letters = {
