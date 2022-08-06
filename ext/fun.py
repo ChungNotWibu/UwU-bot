@@ -3,7 +3,6 @@ from discord.ext import commands
 from random import random
 import random
 
-from hikari import Member
 
 # ===========================================================
 
