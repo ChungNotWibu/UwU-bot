@@ -14,7 +14,7 @@ class Fun(commands.Cog):
 
     # dice
     @commands.command(no_pm=True)
-    async def roll(self, ctx,member = discord.Member):
+    async def roll(self, ctx):
         embed = discord.Embed(title="Roll a dice between 1 to 6", description=f"{ctx.author} have released the number",color=0xff2222)
         embed.set_thumbnail(url="https://uxwing.com/wp-content/themes/uxwing/download/sport-and-awards/dice-game-icon.png")
         embed.add_field(name= random.randint(1, 6), value= 'You got that uwu')
