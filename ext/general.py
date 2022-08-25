@@ -103,8 +103,9 @@ class Command(commands.Cog):
         embed.add_field(name='Help',value='Help for you')
         embed.add_field(name='Prefix',value='`uwu`',inline=False)
         embed.add_field(name='General',value='`snipe`, `ping`, `whois`, `serverinfo`, `invite`, `avatar`', inline=False)
-        embed.add_field(name='Fun',value='`ban`, `roll`, `say`, `usd(upsidedown) [letter]`', inline=False)
+        embed.add_field(name='Fun',value='`fakeban`, `roll`, `say`, `usd(upsidedown) [letter]`', inline=False)
         embed.add_field(name='Tictactoe',value='`tictactoe`, `place [number 1-9]`, `end` ', inline=False)   
+        embed.add_field(name='Mod',value='`kick`,`ban`,`unban`',inline=False)
         await ctx.message.channel.send(embed=embed)
 
     # serverinfo
@@ -135,6 +136,31 @@ class Command(commands.Cog):
         embed1.set_footer(text='Requested by:' + ctx.author.name,icon_url = ctx.author.avatar_url)
 
         await ctx.send(embed=embed1)
+
+    # kick - ban - unban
+    @commands.command()
+    async def kick(ctx,member: discord.Member,*,reason=None):
+        await member.kick(reason=reason)
+
+    @commands.command()
+    async def ban(ctx,member: discord.Member,*,reason=None):
+        await member.ban(reason=reason)
+        await ctx.send (f'Thuck u ! Banned {member.mention}')
+
+    @commands.command()
+    async def unban(ctx,*,member):
+        banned_users = await ctx.guild.bans()
+        member_name , member_discriminator = member.split('#')
+
+        for ban_entry in banned_users:
+            user = ban_entry.user
+
+            if (user.name, user.discriminator) == (member_name , member_discriminator):
+                await ctx.guild.unban(user)
+                await ctx.send(f'Unbanned {user.mention}')
+                return
+
+
 
 def setup(client):
     client.add_cog(Command(client))

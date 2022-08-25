@@ -156,27 +156,19 @@ async def end(ctx):
     global board
     global count
     global gameOver
-
-    if ctx.message.author.id == player1.id or ctx.message.author.id == player2.id :
     
-        count = 0
-        player1 = ''
-        player2 = ''
-        gameOver = True
-        embed = discord.Embed(
-            title='End Game', 
-            description = 'The game has been restart UwU',   
-            color= discord.Colour.green()      
-        )
-        await ctx.send(embed=embed)
-    else:
-        embed1 = discord.Embed(
-            title='Nuuuu', 
-            description = 'Only player in game can end a game',
-            color= discord.Colour.red()
-        )
-        await ctx.send(embed=embed1)
-        
+    count = 0
+    player1 = ''
+    player2 = ''
+    gameOver = True
+    embed = discord.Embed(
+        title='End Game', 
+        description = 'The game has been restart UwU',   
+        color= discord.Colour.green()      
+    )
+    await ctx.send(embed=embed)
+
+    
      
 
 
