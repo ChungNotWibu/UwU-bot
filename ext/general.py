@@ -4,7 +4,6 @@ from discord.ext import commands
 
 
 
-
 # ===========================================================
 
 # ==========snipe===========
@@ -138,27 +137,38 @@ class Command(commands.Cog):
         await ctx.send(embed=embed1)
 
     # kick - ban - unban
-    @commands.command()
-    async def kick(ctx,member: discord.Member,*,reason=None):
-        await member.kick(reason=reason)
+    # @commands.command()
+    # async def kick(ctx, member:discord.Member, *, reason=None):
+    #     await member.kick(reason=reason)
+    #     await ctx.send (f'{member.mention} was kicked ụnu !')
 
-    @commands.command()
-    async def ban(ctx,member: discord.Member,*,reason=None):
-        await member.ban(reason=reason)
-        await ctx.send (f'Thuck u ! Banned {member.mention}')
+    # @commands.command()
+    # async def ban (ctx, member:discord.Member = None, *, reason=None):
+    #     if member == None:
+    #         await ctx.send("Could you please enter a valid user?")
+    #         return
 
-    @commands.command()
-    async def unban(ctx,*,member):
-        banned_users = await ctx.guild.bans()
-        member_name , member_discriminator = member.split('#')
+    #     try:
+    #         await member.ban(reason=reason)
+    #         await ctx.send (f'Thuck u ! Banned {member.mention} !')
+    #     except Exception as error :
+    #         if isinstance(error):
+    #             await ctx.send("Looks like you don't have the permissions to use this command.")
+    #         else:
+    #             await ctx.send(error)
 
-        for ban_entry in banned_users:
-            user = ban_entry.user
+    # @commands.command()
+    # async def unban(ctx,*,member):
+    #     banned_users = await ctx.guild.bans()
+    #     member_name , member_discriminator = member.split('#')
 
-            if (user.name, user.discriminator) == (member_name , member_discriminator):
-                await ctx.guild.unban(user)
-                await ctx.send(f'Unbanned {user.mention}')
-                return
+    #     for ban_entry in banned_users:
+    #         user = ban_entry.user
+
+    #         if (user.name, user.discriminator) == (member_name , member_discriminator):
+    #             await ctx.guild.unban(user)
+    #             await ctx.send(f'Unbanned {user.mention}!')
+    #             return
 
 
 

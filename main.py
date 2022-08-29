@@ -3,7 +3,7 @@ from random import random
 from discord.ext import commands
 import os
 import random
-
+from discord.ext.commands import MissingPermissions
 
 # ======================================================================================
 
@@ -41,6 +41,9 @@ async def on_ready():
         guild_count = guild_count + 1
     print("UwU Bot is in " + str(guild_count) + " guilds.")
 
+@client.event
+async def on_message(message):
+    message.author.guild_permissions.manage_messages
 # ======================================================================================
 
 # tictactoe
@@ -193,6 +196,57 @@ async def place_error(ctx, error):
 
 
 # ======================================================================================
+
+@client.command(name="kick", pass_context=True)
+@commands.has_permissions(manage_roles=True)
+async def kick(ctx, member:discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send (f'{member.mention} was kicked ụnu !')
+
+@kick.error
+async def kick_error(error, ctx):
+    if isinstance(error, MissingPermissions):
+        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        await client.send_message(ctx.message.channel, text)
+
+
+@client.command()
+@commands.has_permissions(manage_roles=True)
+async def ban (ctx, member:discord.Member = None, *, reason=None):
+    if member == None:
+        await ctx.send("Could you please enter a valid user?")
+        return
+    try:
+        await member.ban(reason=reason)
+        await ctx.send (f'Thuck u ! Banned {member.mention} !')
+    except Exception as error :
+        if isinstance(error):
+            await ctx.send("Looks like you don't have the permissions to use this command.")
+        else:
+            await ctx.send(error)
+
+@client.command()
+@commands.has_permissions()
+async def unban(ctx,*,member):
+    banned_users = await ctx.guild.bans()
+    member_name , member_discriminator = member.split('#')
+
+    for ban_entry in banned_users:
+        user = ban_entry.user
+
+        if (user.name, user.discriminator) == (member_name , member_discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f'Unbanned {user.mention}!')
+            return
+
+
+
+
+
+
+
+
+
 
 
 client.run('OTk2Nzc3NjAwNzc1MDk4NDI4.GX1uTb.kZxpYO8Pzpm8OUpufwFC_aOHTNMeazG_SaHMaA')
