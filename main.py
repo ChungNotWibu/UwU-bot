@@ -41,9 +41,6 @@ async def on_ready():
         guild_count = guild_count + 1
     print("UwU Bot is in " + str(guild_count) + " guilds.")
 
-@client.event
-async def on_message(message):
-    message.author.guild_permissions.manage_messages
 # ======================================================================================
 
 # tictactoe
@@ -197,7 +194,7 @@ async def place_error(ctx, error):
 
 # ======================================================================================
 
-@client.command(name="kick", pass_context=True)
+@client.command()
 @commands.has_permissions(manage_roles=True)
 async def kick(ctx, member:discord.Member, *, reason=None):
     await member.kick(reason=reason)
@@ -225,25 +222,19 @@ async def ban (ctx, member:discord.Member = None, *, reason=None):
         else:
             await ctx.send(error)
 
-@client.command()
-@commands.has_permissions()
-async def unban(ctx,*,member):
-    banned_users = await ctx.guild.bans()
-    member_name , member_discriminator = member.split('#')
+# @client.command()
+# @commands.has_permissions()
+# async def unban(ctx,*,member):
+#     banned_users = await ctx.guild.bans()
+#     member_name , member_discriminator = member.split('#')
 
-    for ban_entry in banned_users:
-        user = ban_entry.user
+#     for ban_entry in banned_users:
+#         user = ban_entry.user
 
-        if (user.name, user.discriminator) == (member_name , member_discriminator):
-            await ctx.guild.unban(user)
-            await ctx.send(f'Unbanned {user.mention}!')
-            return
-
-
-
-
-
-
+#         if (user.name, user.discriminator) == (member_name , member_discriminator):
+#             await ctx.guild.unban(user)
+#             await ctx.send(f'Unbanned {user.mention}!')
+#             return
 
 
 
