@@ -28,6 +28,8 @@ async def reload(ctx, extensions):
 for filename in os.listdir('./ext'):
     if filename.endswith('.py'):
         client.load_extension(f'ext.{filename[:-3]}')
+    else:
+        print(f'Unable to load {filename[:-3]}')
 
 # ======================================================================================
 
