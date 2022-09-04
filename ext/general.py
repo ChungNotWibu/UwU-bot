@@ -2,8 +2,6 @@
 import discord
 from discord.ext import commands
 
-
-
 # ===========================================================
 
 # ==========snipe===========
@@ -136,41 +134,15 @@ class Command(commands.Cog):
 
         await ctx.send(embed=embed1)
 
-    # kick - ban - unban
-    # @commands.command()
-    # async def kick(ctx, member:discord.Member, *, reason=None):
-    #     await member.kick(reason=reason)
-    #     await ctx.send (f'{member.mention} was kicked ụnu !')
-
-    # @commands.command()
-    # async def ban (ctx, member:discord.Member = None, *, reason=None):
-    #     if member == None:
-    #         await ctx.send("Could you please enter a valid user?")
-    #         return
-
-    #     try:
-    #         await member.ban(reason=reason)
-    #         await ctx.send (f'Thuck u ! Banned {member.mention} !')
-    #     except Exception as error :
-    #         if isinstance(error):
-    #             await ctx.send("Looks like you don't have the permissions to use this command.")
-    #         else:
-    #             await ctx.send(error)
-
-    # @commands.command()
-    # async def unban(ctx,*,member):
-    #     banned_users = await ctx.guild.bans()
-    #     member_name , member_discriminator = member.split('#')
-
-    #     for ban_entry in banned_users:
-    #         user = ban_entry.user
-
-    #         if (user.name, user.discriminator) == (member_name , member_discriminator):
-    #             await ctx.guild.unban(user)
-    #             await ctx.send(f'Unbanned {user.mention}!')
-    #             return
-
-
+    # shutdown
+    @commands.command()
+    async def shutdown(self, ctx):       
+        id = str(ctx.author.id)
+        if id == '747465114512261185':
+            await ctx.send('Shutting down the bot!')
+            await ctx.bot.logout()       
+        else:
+            await ctx.send("You dont have sufficient permmisions to perform this action!")
 
 def setup(client):
     client.add_cog(Command(client))
