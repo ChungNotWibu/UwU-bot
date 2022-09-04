@@ -107,11 +107,13 @@ class Command(commands.Cog):
 
     # serverinfo
     @commands.command(no_pm=True)
-    async def serverinfo(self, ctx):
-        embed = discord.Embed()
+    async def serverinfo(self, ctx,):
+        embed = discord.Embed(timestamp=ctx.message.created_at,colour=0x44ff44)
         guild = ctx.message.guild
+        embed.set_footer(text=f'Yêu cầu bởi {ctx.author}', icon_url=ctx.author.avatar_url)
         embed.set_author(name=str(guild), icon_url=guild.icon_url)
         embed.add_field(name="Khởi tạo vào:", value=str(guild.created_at.strftime("%d-%m-%Y at %H:%M")))
+        embed.add_field(name='ID:', value=ctx.guild.id, inline=False)
         embed.add_field(name="Số member:", value=str(guild.member_count))
         embed.add_field(name="Số vai trò:", value=str(len(guild.roles)))
         embed.add_field(name="Số kênh:", value=str(len(guild.channels)))
@@ -126,11 +128,10 @@ class Command(commands.Cog):
         if avamember == None:
           avamember = ctx.author
         embed1 = discord.Embed(
-            colour=avamember.color,title = f"{avamember.name}'s avatar",timestamp=ctx.message.created_at
+            colour=avamember.color,title = f"Ảnh đại diện của{avamember.name}",timestamp=ctx.message.created_at
         )
         embed1.set_image(url=avamember.avatar_url)
         embed1.set_footer(text='Yêu cầu bởi:' + ctx.author.name,icon_url = ctx.author.avatar_url)
-
         await ctx.send(embed=embed1)
 
     # shutdown
