@@ -139,10 +139,10 @@ class Command(commands.Cog):
     async def shutdown(self, ctx):       
         id = str(ctx.author.id)
         if id == '747465114512261185':
-            await ctx.send('Shutting down the bot!')
+            await ctx.send('Shutting down the bot ỤnU!')
             await ctx.bot.logout()       
         else:
-            await ctx.send("You dont have sufficient permmisions to perform this action!")
+            await ctx.send("UwU u dont have sufficient permmisions to perform this action!")
 
 def setup(client):
     client.add_cog(Command(client))
