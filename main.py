@@ -39,7 +39,7 @@ async def on_ready():
     for guild in client.guilds:
         print(f"- {guild.id} (name: {guild.name})")
         guild_count = guild_count + 1
-    print("UwU Bot is in " + str(guild_count) + " guilds.")
+    print("UwU Bot trong " + str(guild_count) + " server.")
 
 # ======================================================================================
 
@@ -90,12 +90,12 @@ async def tictactoe(ctx, p1: discord.Member, p2: discord.Member):
         num = random.randint(1, 2)
         if num == 1:
             turn = player1
-            await ctx.send("It is <@" + str(player1.id) + ">'s turn (๑˃̵ᴗ˂̵)ﻭ.")
+            await ctx.send("Đến lượt của <@" + str(player1.id) + "> (๑˃̵ᴗ˂̵)ﻭ.")
         elif num == 2:
             turn = player2
-            await ctx.send("It is <@" + str(player2.id) + ">'s turn (๑˃̵ᴗ˂̵)ﻭ.")
+            await ctx.send("Đến lượt của <@" + str(player2.id) + "> (๑˃̵ᴗ˂̵)ﻭ.")
     else:
-        await ctx.send("A game is already in progress! Finish it before starting a new one uwu.")
+        await ctx.send("❌ Trò chơi vẫn đang trong quá trình thực hiện! Làm ơn hoàn thành nó trước khi bắt đầu 1 ván mới uwu.")
 
 
 @client.command()
@@ -127,21 +127,21 @@ async def place(ctx, pos: int):
                 checkWinner(winningConditions, mark)
                 print(count)
                 if gameOver == True:
-                    await ctx.send(mark + " <@" + str(player1.id) + "> Wins! (/◕ヮ◕)/ ヽ(^o^)/")
+                    await ctx.send(mark + "Chúc mừng <@" + str(player1.id) + "> đã chiến thắng! (/◕ヮ◕)/ ヽ(^o^)/")
                 elif count >= 9:
                     gameOver = True
-                    await ctx.send("(゜o゜) Tie! Do you want to play again? ")
+                    await ctx.send("(゜o゜) Hòa rồi ! Bạn muốn chơi lại ván mới chứ ? ")
 
                 if turn == player1:
                     turn = player2
                 elif turn == player2:
                     turn = player1
             else:
-                await ctx.send("Be sure to choose an integer between 1 and 9 (inclusive) and an unmarked tile.")
+                await ctx.send("Đảm bảo chọn một số nguyên từ 1 đến 9 (vd: uwu place 1).")
         else:
-            await ctx.send("It is not your turn ¯\_(ツ)_/¯")
+            await ctx.send("❌ Không phải lượt của bạn ¯\_(ツ)_/¯")
     else:
-        await ctx.send("Plz start a new game using the uwu tictactoe command.")
+        await ctx.send("Làm ơn hãy bắt đầu trò chơi bằng lệnh `uwu tictactoe` .")
 
 
 def checkWinner(winningConditions, mark):
@@ -164,8 +164,8 @@ async def end(ctx):
     player2 = ''
     gameOver = True
     embed = discord.Embed(
-        title='End Game', 
-        description = 'The game has been restart UwU',   
+        title='Trò chơi kết thúc', 
+        description = 'Trò chơi đã được khởi tạo lại UwU',   
         color= discord.Colour.green()      
     )
     await ctx.send(embed=embed)
@@ -179,17 +179,17 @@ async def end(ctx):
 async def tictactoe_error(ctx, error):
     print(error)
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Plz mention 2 players for this command.")
+        await ctx.send("Xin vui lòng đề cập đến 2 người chơi cho lệnh này.")
     elif isinstance(error, commands.BadArgument):
-        await ctx.send("Plz make sure to mention/ping players (ie. <@688534433879556134>).")
+        await ctx.send("Vui lòng đảm bảo đề cập đến người chơi / ping (ví dụ: <@996777600775098428>).")
 
 
 @place.error
 async def place_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Plz enter a position you would like to mark.")
+        await ctx.send("Vui lòng nhập một vị trí bạn muốn đánh dấu.")
     elif isinstance(error, commands.BadArgument):
-        await ctx.send("Plz make sure to enter an integer.")
+        await ctx.send("Vui lòng đảm bảo nhập một số nguyên.")
 
 
 # ======================================================================================
@@ -203,7 +203,7 @@ async def kick(ctx, member:discord.Member, *, reason=None):
 @kick.error
 async def kick_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        text = "❌ Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
         await client.send_message(ctx.message.channel, text)
 
 
@@ -211,14 +211,14 @@ async def kick_error(error, ctx):
 @commands.has_permissions(manage_roles=True)
 async def ban (ctx, member:discord.Member = None, *, reason=None):
     if member == None:
-        await ctx.send("Could you please enter a valid user?")
+        await ctx.send("Bạn có thể vui lòng nhập một người dùng hợp lệ không? ÙwÚ")
         return
     try:
         await member.ban(reason=reason)
-        await ctx.send (f'Thuck u ! Banned {member.mention} !')
+        await ctx.send (f'Thuck u ! Đã ban {member.mention} !')
     except Exception as error :
         if isinstance(error):
-            await ctx.send("Looks like you don't have the permissions to use this command.")
+            await ctx.send("❌ Có vẻ như bạn không có quyền sử dụng lệnh này.")
         else:
             await ctx.send(error)
 
