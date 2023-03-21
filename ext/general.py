@@ -1,10 +1,7 @@
 
-from ast import arg
-from re import A
 import discord
 from discord.ext import commands
-import googletrans
-from googletrans import Translator
+
 
 
 # ===========================================================
@@ -138,13 +135,6 @@ class Command(commands.Cog):
         embed1.set_image(url=avamember.avatar_url)
         embed1.set_footer(text='Yêu cầu bởi:' + ctx.author.name,icon_url = ctx.author.avatar_url)
         await ctx.send(embed=embed1)
-    
-    # translate
-    # @commands.command()
-    # async def translate(ctx, lang, *,args):
-    #     t = Translator()
-    #     a = t.translate(args, dest=lang)
-    #     await ctx.send(a.text)
 
     # shutdown
     @commands.command()
