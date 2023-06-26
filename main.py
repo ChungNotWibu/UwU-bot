@@ -240,7 +240,7 @@ async def ban (ctx, member:discord.Member = None, *, reason=None):
 
 
 
-client.run('OTk2Nzc3NjAwNzc1MDk4NDI4.GX1uTb.kZxpYO8Pzpm8OUpufwFC_aOHTNMeazG_SaHMaA')
+client.run('OTk2Nzc3NjAwNzc1MDk4NDI4.GfV27I.8ZgvJL18mc9bG5-LmBWylrfAukR1WMYHzG91Do')
 
 
 

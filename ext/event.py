@@ -40,7 +40,7 @@ class Event(commands.Cog):
             await message.channel.send('hasagi mà ko trăn trối ko phải hảo hán')
         if message.content == 'sus':
             await message.channel.send('amogus ඞ')
-        if message.content == 'kiss':
+        if message.content == 'uwu kiss':
             await message.channel.send('Love u my bbi *moah*')
 
 
